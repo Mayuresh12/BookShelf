@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import BookStatus from './BookStatus';
+import NotAvailableImage from "../icons/Not_available.svg";
+import PropTypes from "prop-types";
+/* 
+  Books component will receive book object and display book with the selector button for the status of the book on the shelf.
+*/
+
 class Books extends Component {
   render() {
-    /*
-    const image and author make sure that search works correctly when a book does not have a thumbnail or an author;
-    if there is no author then "unkknow" is displayed, while where is no cover image, it is replaces by nature.jpg
-    */
     const { book } = this.props;
-    const image = book.imageLinks && book.imageLinks.thumbnail ? book.imageLinks.thumbnail : false;
+    const image = book.imageLinks && book.imageLinks.thumbnail ? book.imageLinks.thumbnail : NotAvailableImage;
     const author = book.authors ? book.authors : "Unknown";
     return (
       <div className="book">
@@ -26,5 +28,7 @@ class Books extends Component {
     )
   }
 }
-
+Books.propTypes = {
+  book: PropTypes.object.isRequired
+};
 export default Books;

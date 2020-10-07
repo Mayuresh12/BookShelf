@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 class SearchBar extends Component {
   render() {
 
-    /* when the query value is provided, it is used by search function to return matching results;
-    if there is no matching search results, an empty <li> elelment is returned
+    /*
+    Whenever the user search for a book the results are shon to the user. If no results are found Book not found message is displayed.
     */
     const { searchBook } = this.props;
     return (
@@ -30,7 +30,7 @@ class SearchBar extends Component {
                     updateShelf={this.props.updateShelf}
                   />
                 </li>
-              ))) : <li></li>}
+              ))) : <li><p>Book Not Found!</p></li>}
           </ol>
         </div>
       </div>

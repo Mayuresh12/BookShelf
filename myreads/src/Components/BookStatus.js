@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 
+/*
+Allows the user to update the book category.
+*/
 class BookStatus extends Component {
 
   render() {
@@ -22,4 +26,8 @@ class BookStatus extends Component {
   }
 }
 
+BookStatus.propTypes = {
+	book: PropTypes.object.isRequired,
+	updateShelf: PropTypes.func.isRequired
+};
 export default BookStatus;

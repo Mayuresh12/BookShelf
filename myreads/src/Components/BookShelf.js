@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Books from './Books';
+import PropTypes from "prop-types";
 
+/*
+  Here the books object is filter into three shelf  categories.
+*/ 
 class BookShelf extends Component {
   render() {
     const { books } = this.props;
@@ -66,5 +70,7 @@ class BookShelf extends Component {
 
   }
 }
-
+BookShelf.propTypes = {
+  book: PropTypes.object.isRequired
+};
 export default BookShelf;

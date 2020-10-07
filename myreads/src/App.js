@@ -50,8 +50,6 @@ class BooksApp extends Component {
   }
 
   updateShelf = (bookAddedToTheShelf, shelf) => {
-
-
     let booksAddedToTheShelf = this.state.books.filter(book => book.id !== bookAddedToTheShelf.id)
     booksAddedToTheShelf.push(bookAddedToTheShelf)
 
