@@ -12,7 +12,8 @@ User also can also saerch the book and add them to shelf.
 - npm install
 - npm start
 
- ###### App Demo
+###### App Demo
+![](gif/1.gif)
 
 ## Tools used
 - Visual Studio Code
