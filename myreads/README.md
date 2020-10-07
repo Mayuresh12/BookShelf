@@ -14,7 +14,7 @@ User also can also saerch the book and add them to shelf.
 
  ###### App Demo
 
-<img src="gif/1.gif"/>
+![](gif/1.gif)
 
 ## Tools used
 - Visual Studio Code
