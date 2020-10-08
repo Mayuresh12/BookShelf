@@ -45,7 +45,7 @@ class BooksApp extends Component {
         this.setState((prevState) => ({ isbooksSearched }))
       }).catch(isbooksSearched => this.setState({ isbooksSearched: [] }))
     } else {
-      this.setState({ isbooksSearched: [] })
+     // this.setState({ isbooksSearched: [] })
     }
   }
 

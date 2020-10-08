@@ -7,70 +7,55 @@ import PropTypes from "prop-types";
 */ 
 class BookShelf extends Component {
   render() {
+    const SHELVES = [
+      {
+        title: 'Currently Reading',
+        id: 'currentlyReading'
+      },
+      {
+        title: 'Want To Read',
+        id: 'wantToRead'
+      },
+      {
+        title: 'Read',
+        id: 'read'
+      }
+    ];
     const { books } = this.props;
-    const currentlyReading = books.filter(book => book.shelf === "currentlyReading");
-    const wantToRead = books.filter(book => book.shelf === "wantToRead");
-    const read = books.filter(book => book.shelf === "read");
+    const currentlyReading = books.filter(book => book.shelf === SHELVES[0].id);
+    const wantToRead = books.filter(book => book.shelf === SHELVES[1].id);
+    const read = books.filter(book => book.shelf === SHELVES[2].id);
 
-    return (
+    const Shelf = ({title, books}) => (
+      <div className="bookshelf">
+      <h2 className="bookshelf-title">{title}</h2>
+            <div className="bookshelf-books">
+              <ol className="books-grid">
+                {books.map(book => (
+                  <li key={book.id}>
+                    <Books
+                      book={book}
+                      books={this.props.books}
+                      updateShelf={this.props.updateShelf}
+                    />
+                  </li>
+                ))
+                }
+              </ol>
+            </div>
+          </div>
+    );
+    return (  
       <div>
-        <div className="bookshelf">
-          <h2 className="bookshelf-title">Currently reading</h2>
-          <div className="bookshelf-books">
-            <ol className="books-grid">
-              {currentlyReading.map(book => (
-                <li key={book.id}>
-                  <Books
-                    book={book}
-                    books={this.props.books}
-                    updateShelf={this.props.updateShelf}
-                  />
-                </li>
-              ))
-              }
-            </ol>
-          </div>
-        </div>
-        <div className="bookshelf">
-          <h2 className="bookshelf-title">Want to read</h2>
-          <div className="bookshelf-books">
-            <ol className="books-grid">
-              {wantToRead.map(book => (
-                <li key={book.id}>
-                  <Books
-                    book={book}
-                    books={this.props.books}
-                    updateShelf={this.props.updateShelf}
-                  />
-                </li>
-              ))
-              }
-            </ol>
-          </div>
-        </div>
-        <div className="bookshelf">
-          <h2 className="bookshelf-title">Read</h2>
-          <div className="bookshelf-books">
-            <ol className="books-grid">
-              {read.map(book => (
-                <li key={book.id}>
-                  <Books
-                    book={book}
-                    books={this.props.books}
-                    updateShelf={this.props.updateShelf}
-                  />
-                </li>
-              ))
-              }
-            </ol>
-          </div>
-        </div>
+        {Shelf({title: SHELVES[0].title, books: currentlyReading })}
+        {Shelf({title: SHELVES[1].title, books: wantToRead })}
+        {Shelf({title: SHELVES[0].title, books: read }) }
       </div>
     )
 
   }
 }
 BookShelf.propTypes = {
-  book: PropTypes.object.isRequired
+  books: PropTypes.array.isRequired
 };
 export default BookShelf;
