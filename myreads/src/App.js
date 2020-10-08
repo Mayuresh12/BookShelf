@@ -45,7 +45,7 @@ class BooksApp extends Component {
         this.setState((prevState) => ({ isbooksSearched }))
       }).catch(isbooksSearched => this.setState({ isbooksSearched: [] }))
     } else {
-     // this.setState({ isbooksSearched: [] })
+      this.setState({ isbooksSearched: [] })
     }
   }
 
@@ -56,7 +56,6 @@ class BooksApp extends Component {
     BooksAPI.update(bookAddedToTheShelf, shelf).then(response => {
       bookAddedToTheShelf.shelf = shelf
       this.setState({ books: booksAddedToTheShelf })
-      this.setState({ isbooksSearched: [] })
     })
   }
   render() {
@@ -79,14 +78,13 @@ class BooksApp extends Component {
           </div>
         )} />
 
-        <Route path="/search" render={() => (
+        <Route path="/search">
           <SearchBar
             isbooksSearched={this.state.isbooksSearched}
             searchBook={this.searchBook}
             updateShelf={this.updateShelf}
           />
-        )}
-        />
+        </Route>
       </div>
     )
   }
